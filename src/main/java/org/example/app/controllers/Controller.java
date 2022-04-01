@@ -12,6 +12,9 @@ public class Controller {
     private ViewBooksPanel viewBooksPanel;
     public Controller(){
         createBookPanel=new CreateBookPanel();
+        createBookPanel.setFormListener((author,title) -> {
+            System.out.println(author+": "+title);
+        });
         viewBooksPanel=new ViewBooksPanel();
         mainFrame=new MainFrame(createBookPanel,viewBooksPanel);
     }
