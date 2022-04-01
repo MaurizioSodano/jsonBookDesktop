@@ -1,15 +1,18 @@
 package org.example.app.gui;
 
+import org.example.app.model.Book;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class ViewBooksPanel extends JPanel {
 
     private BookTableModel tableModel;
     private JTable table;
 
-    public ViewBooksPanel() {
-        tableModel=new BookTableModel();
+    public ViewBooksPanel(List<Book> booklist) {
+        tableModel=new BookTableModel(booklist);
         table=new JTable(tableModel);
 
         setBackground(Color.green);

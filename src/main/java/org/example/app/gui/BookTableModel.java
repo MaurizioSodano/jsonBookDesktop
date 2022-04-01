@@ -6,7 +6,11 @@ import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class BookTableModel extends AbstractTableModel {
-    private List<Book> bookList = List.of(new Book("title1", "author1"), new Book("title2", "author2"));
+    private List<Book> bookList ;
+
+    public BookTableModel(List<Book> books) {
+        this.bookList=books;
+    }
 
     @Override
     public int getRowCount() {

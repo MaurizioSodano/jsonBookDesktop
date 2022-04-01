@@ -20,7 +20,7 @@ public class Controller {
         try {
             var booklist = bookService.getAllBooks();
             System.out.println(booklist);
-
+            viewBooksPanel=new ViewBooksPanel(booklist);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class Controller {
         createBookPanel.setFormListener((author,title) -> {
             System.out.println(author+": "+title);
         });
-        viewBooksPanel=new ViewBooksPanel();
+
         mainFrame=new MainFrame(createBookPanel,viewBooksPanel);
     }
 }
