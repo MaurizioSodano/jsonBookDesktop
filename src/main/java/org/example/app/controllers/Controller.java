@@ -3,6 +3,7 @@ package org.example.app.controllers;
 import org.example.app.gui.CreateBookPanel;
 import org.example.app.gui.MainFrame;
 import org.example.app.gui.ViewBooksPanel;
+import org.example.app.model.Book;
 import org.example.app.services.BookService;
 
 import java.io.IOException;
@@ -18,15 +19,21 @@ public class Controller {
     public Controller(){
         bookService=new BookService();
         try {
-            var booklist = bookService.getAllBooks();
-            System.out.println(booklist);
-            viewBooksPanel=new ViewBooksPanel(booklist);
+            var bookList = bookService.getAllBooks();
+            viewBooksPanel=new ViewBooksPanel(bookList);
         } catch (IOException e) {
             e.printStackTrace();
         }
         createBookPanel=new CreateBookPanel();
         createBookPanel.setFormListener((author,title) -> {
-            System.out.println(author+": "+title);
+            var book =new Book(title,author);
+            try {
+                bookService.saveBook(book);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         });
 
         mainFrame=new MainFrame(createBookPanel,viewBooksPanel);
