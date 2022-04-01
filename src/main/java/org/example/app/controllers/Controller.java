@@ -6,6 +6,7 @@ import org.example.app.gui.ViewBooksPanel;
 import org.example.app.model.Book;
 import org.example.app.services.BookService;
 
+import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -34,7 +35,10 @@ public class Controller {
                 bookService.saveBook(book);
                 refresh();
             } catch (IOException e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(mainFrame,
+                        "Error saving book.",
+                        "Book Server not available",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -54,7 +58,11 @@ public class Controller {
             bookList.addAll(bookService.getAllBooks());
             viewBooksPanel.refresh();
         } catch (IOException e) {
-            e.printStackTrace();
+            //custom title, error icon
+            JOptionPane.showMessageDialog(mainFrame,
+                    "Error refreshing book list.",
+                    "Book Server not available",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
 
