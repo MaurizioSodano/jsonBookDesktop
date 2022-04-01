@@ -18,7 +18,9 @@ public class Controller {
     public Controller(){
         bookService=new BookService();
         try {
-            bookService.getAllBooks();
+            var booklist = bookService.getAllBooks();
+            System.out.println(booklist);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

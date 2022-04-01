@@ -1,5 +1,6 @@
 package org.example.app.services;
 
+import com.google.gson.Gson;
 import org.example.app.model.Book;
 
 import java.io.BufferedReader;
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
 public class BookService {
@@ -29,9 +31,10 @@ public class BookService {
                 sb.append(line);
             }
         }
-
-        System.out.println(sb);
         conn.disconnect();
-        return null;
+        Gson gson = new Gson();
+        var bookArray = gson.fromJson(sb.toString(),Book[].class);
+
+        return Arrays.asList(bookArray);
     }
 }
