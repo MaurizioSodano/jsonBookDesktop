@@ -28,7 +28,7 @@ public class BookService {
             byte[] input = json.getBytes(StandardCharsets.UTF_8);
             os.write(input, 0, input.length);
         }
-
+        con.getResponseCode();//waits the response from the server
         con.disconnect();
     }
 

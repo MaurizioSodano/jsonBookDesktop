@@ -25,4 +25,8 @@ public class ViewBooksPanel extends JPanel {
 
 
     }
+
+    public void refresh() {
+        tableModel.fireTableDataChanged();
+    }
 }
